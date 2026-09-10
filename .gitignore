@@ -1,0 +1,74 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Lock file — omit so Railway installs fresh Linux-compatible binaries
+# (lightningcss, sharp, etc. have platform-specific native binaries)
+package-lock.json
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files
+# .env         → committed (safe template/defaults, no real secrets)
+# .env.local   → gitignored (your personal local settings)
+# .env.railway.example → committed (Railway variable template, no real secrets)
+.env.local
+.env.production
+.env.*.local
+
+# SQLite database (dev only — not used in production)
+*.db
+*.db-journal
+
+# Uploads — ignore user-generated files but keep static logo assets
+public/uploads/
+!public/uploads/logo.png
+!public/uploads/jjan-logo.png
+!public/uploads/mrdo-logo.png
+
+# Generated static content — DO commit these (they are the published frontend data)
+# public/content/ is intentionally NOT ignored
+
+# Backups
+/backups/
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+/src/generated/prisma
+
+# Python artifacts & Railway local token
+*.pyc
+__pycache__/
+.railway_token
+.saved_commands.json
