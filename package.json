@@ -1,0 +1,62 @@
+{
+  "name": "foundation-website",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "scripts": {
+    "set-provider": "tsx scripts/set-db-provider.ts",
+    "dev": "tsx scripts/set-db-provider.ts && next dev --turbopack",
+    "build": "node_modules/.bin/tsx scripts/set-db-provider.ts && node_modules/.bin/prisma generate && node_modules/.bin/next build",
+    "start": "node_modules/.bin/next start",
+    "start:with-db": "node_modules/.bin/prisma db push --accept-data-loss=false && node_modules/.bin/next start",
+    "lint": "eslint",
+    "db:migrate": "prisma migrate dev",
+    "db:migrate:prod": "prisma migrate deploy",
+    "db:push": "prisma db push",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:studio": "prisma studio",
+    "db:reset": "prisma migrate reset --force",
+    "db:setup": "tsx scripts/set-db-provider.ts && prisma migrate dev && tsx prisma/seed.ts",
+    "postinstall": "echo 'Run prisma generate manually if schema changes'",
+    "admin:create": "tsx scripts/create-admin.ts",
+    "backup": "tsx scripts/backup.ts",
+    "content:generate": "tsx scripts/generate-content.ts",
+    "turso:push": "tsx scripts/turso-db-push.ts",
+    "turso:migrate": "tsx scripts/migrate-to-turso.ts"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.18.0",
+    "@prisma/adapter-libsql": "^7.10.0",
+    "@prisma/client": "6.8.2",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/uuid": "^10.0.0",
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.11.0",
+    "jose": "^6.2.8",
+    "jszip": "^3.10.2",
+    "lucide-react": "^1.31.0",
+    "next": "^15.0.7",
+    "prisma": "6.8.2",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-hot-toast": "^2.6.0",
+    "sharp": "^0.35.3",
+    "slugify": "^1.6.9",
+    "tsx": "^4.23.11",
+    "uuid": "^14.0.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv": "^17.4.2",
+    "eslint": "^9",
+    "eslint-config-next": "^15.0.7",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
